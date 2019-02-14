@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, Button, View } from 'react-native';
+import { StyleSheet, TextInput, Button, KeyboardAvoidingView,View } from 'react-native';
 
 class InputItem extends Component {
     state = {
@@ -28,14 +28,17 @@ class InputItem extends Component {
             <View style={styles.inputContainer}>
                 <View style={styles.contentInput}>
                     <TextInput
-                        contentholder="Write.."
+                        placeholder="Write.."
                         value={this.state.contentName}
-                    // onChangeText={this.contentChangeHandler}
+                        onChangeText={this.contentChangeHandler}
                     />
                 </View>
                 <View style={styles.contentButton}>
-                    <Button title="Add"
-                        onPress={this.contentSubmitHandler} />
+                    <Button
+                     title="Add"
+                     color="#2C3E50"
+                        onPress={this.contentSubmitHandler}
+                        />
                 </View>
             </View>
 
@@ -47,27 +50,24 @@ class InputItem extends Component {
 const styles = StyleSheet.create({
     inputContainer: {
         flex: 1,
-        width: "100%",
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        padding: 20
+        padding: 20,
     },
     contentInput: {
-        flex:2,
-        height:42,
+        flex: 2,
+        height: 42,
         backgroundColor: "#ECF0F1",
         color: "#2C3E50"
     },
     contentButton: {
-        flex:1,
-        borderColor:"#ECF0F1",
-        borderWidth:2,
-        backgroundColor: "#2C3E50",
-        color: "#ECF0F1",
-        paddingTop:2,
-        paddingBottom:0,
-        textAlign:"center"
+        flex: 1,
+        borderColor: "#ECF0F1",
+        borderWidth: 2,        
+        color: "#2C3E50",
+        paddingTop: 2,
+        textAlign: "center"
     }
 });
 
