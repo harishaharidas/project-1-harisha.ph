@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, Button, KeyboardAvoidingView,View } from 'react-native';
+import { StyleSheet, TextInput, Button, View } from 'react-native';
 
 class InputItem extends Component {
     state = {
@@ -13,6 +13,7 @@ class InputItem extends Component {
     };
 
     contentSubmitHandler = () => {
+        console.warn('sssss')
         if (this.state.contentName.trim() === "") {
             return;
         }
@@ -24,6 +25,8 @@ class InputItem extends Component {
     };
 
     render() {
+        console.log(this.state.contentName, 'hai');
+        
         return (
             <View style={styles.inputContainer}>
                 <View style={styles.contentInput}>
@@ -35,10 +38,10 @@ class InputItem extends Component {
                 </View>
                 <View style={styles.contentButton}>
                     <Button
-                     title="Add"
-                     color="#2C3E50"
+                        title="Add"
+                        color="#2C3E50"
                         onPress={this.contentSubmitHandler}
-                        />
+                    />
                 </View>
             </View>
 
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
     contentButton: {
         flex: 1,
         borderColor: "#ECF0F1",
-        borderWidth: 2,        
+        borderWidth: 2,
         color: "#2C3E50",
         paddingTop: 2,
         textAlign: "center"

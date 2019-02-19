@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView, View, ScrollView } from 'react-native';
 
 import InputItem from "./src/componet/InputItem/InputItem";
-import ListItem from "./src/componet/ListItem/ListItem";
+import DeleteList from './src/componet/DeleteList/DeletList';
 
 export default class App extends Component {
 
@@ -22,18 +22,28 @@ export default class App extends Component {
 
 
   contentHandler = contentName => {
+    console.warn('pppp')
     this.setState(prevState => {
       return {
-        contents: prevState.contents.concat(contentName)
+        contents: prevState.contents.concat({
+          key: Math.random(),
+          name: contentName
+        })
+      };
+    });
+  };
 
-        }
-      })
-    
-    };
+  contentDeleteHandler = key => {
+    this.setState(prevState => {
+      return {
+        contents: prevState.contents.filter(content => {
+          return content.key !== key;
+        })
+      };
+    });
+  };
+
   render() {
-    const conentOutput = this.state.contents.map((content, i) => (
-      <ListItem key={i} contentName={content} />
-    ));
     return (
       <KeyboardAvoidingView style={styles.container}>
         <ScrollView>
@@ -44,11 +54,9 @@ export default class App extends Component {
           </View>
 
           <View style={styles.main}>
-            <View style={styles.listContainer}>{conentOutput}</View>
-          </View>
+            <DeleteList contents={this.state.contents} onItemDeleted={this.contentDeleteHandler} />
+          </View>     
         </ScrollView>
-
-
       </KeyboardAvoidingView>
     );
   }
@@ -83,8 +91,5 @@ const styles = StyleSheet.create({
     flex: 4,
     borderColor: '#ECF0F1',
     borderWidth: 3
-  },
-  listContainer: {
-    width: "100%"
   }
 });
