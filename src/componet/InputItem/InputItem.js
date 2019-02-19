@@ -13,7 +13,6 @@ class InputItem extends Component {
     };
 
     contentSubmitHandler = () => {
-        console.warn('sssss')
         if (this.state.contentName.trim() === "") {
             return;
         }
@@ -26,7 +25,7 @@ class InputItem extends Component {
 
     render() {
         console.log(this.state.contentName, 'hai');
-        
+
         return (
             <View style={styles.inputContainer}>
                 <View style={styles.contentInput}>

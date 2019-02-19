@@ -22,7 +22,6 @@ export default class App extends Component {
 
 
   contentHandler = contentName => {
-    console.warn('pppp')
     this.setState(prevState => {
       return {
         contents: prevState.contents.concat({
@@ -55,7 +54,7 @@ export default class App extends Component {
 
           <View style={styles.main}>
             <DeleteList contents={this.state.contents} onItemDeleted={this.contentDeleteHandler} />
-          </View>     
+          </View>
         </ScrollView>
       </KeyboardAvoidingView>
     );
